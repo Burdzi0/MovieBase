@@ -11,5 +11,6 @@ data class Movie(
     @PrimaryKey(autoGenerate = true) val idM:Long,
     val title: String,
     @ColumnInfo(name = "premiere_date") var date: Date?,
+    val description: String,
     @Embedded val director: Director
 )

@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey
 
 @Entity(tableName = "Directors")
 data class Director(
-    @PrimaryKey(autoGenerate = true) val idD:Long,
+    @PrimaryKey(autoGenerate = true) val idD: Long,
     @ColumnInfo(name = "first_name") val firstName: String,
     @ColumnInfo(name = "last_name") val lastName: String
 )
