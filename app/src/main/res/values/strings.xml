@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MovieBase</string>
+    <string name="database_updated">database_updated</string>
 </resources>

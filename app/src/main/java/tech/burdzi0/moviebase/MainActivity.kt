@@ -1,6 +1,8 @@
 package tech.burdzi0.moviebase
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
@@ -14,8 +16,6 @@ import tech.burdzi0.moviebase.database.entities.Director
 import tech.burdzi0.moviebase.database.entities.Movie
 
 class MainActivity : AppCompatActivity() {
-
-    private var loaded = false
 
     private val directors = arrayListOf(
         Director(1, "Steven", "Spielberg"),
@@ -51,13 +51,26 @@ class MainActivity : AppCompatActivity() {
         initializeButtonOnClickBehaviour()
 
         val loadData = findViewById<Button>(R.id.button2)
+
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
+        val loaded = sharedPref.getBoolean(getString(R.string.database_updated), false)
+
         loadData.setOnClickListener {
             if (!loaded) {
                 insertDirectors()
                 insertMovies()
-                loaded = true
+                updateSharedPreferences(sharedPref)
                 Toast.makeText(this, "Data successfully loaded!", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "Data already loaded!", Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+    private fun updateSharedPreferences(sharedPref:SharedPreferences) {
+        with (sharedPref.edit()) {
+            putBoolean(getString(R.string.database_updated), true)
+            apply()
         }
     }
 
