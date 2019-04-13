@@ -11,4 +11,8 @@ object SingleThreadExecutor {
     fun <T> execute(callable: Callable<T>): Future<T> {
        return thread.submit(callable)
     }
+
+    fun execute(runnable: Runnable) {
+        thread.execute(runnable)
+    }
 }

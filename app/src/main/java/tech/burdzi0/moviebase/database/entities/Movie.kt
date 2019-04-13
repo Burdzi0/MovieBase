@@ -10,7 +10,7 @@ import java.util.*
 data class Movie(
     @PrimaryKey(autoGenerate = true) val idM:Long,
     val title: String,
-    @ColumnInfo(name = "premiere_date") var date: Date?,
+    @ColumnInfo(name = "premiere_date") var date: String?,
     val description: String,
     @Embedded val director: Director
 )

@@ -19,7 +19,7 @@ interface DirectorDao {
     fun getDirectorsByLastName(lastName: String):List<Director>
 
     @Insert
-    fun insert(director: Director)
+    fun insert(vararg director: Director)
 
     @Delete
     fun delete(director: Director)
