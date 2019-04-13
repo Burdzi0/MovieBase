@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.Toast
+import com.facebook.stetho.Stetho
 import tech.burdzi0.moviebase.SingleThreadExecutor.execute
 import tech.burdzi0.moviebase.database.DatabaseProvider.Companion.getDatabase
 import tech.burdzi0.moviebase.database.daos.DirectorDao
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        Stetho.initializeWithDefaults(this)
         initializeButtonOnClickBehaviour()
 
         val loadData = findViewById<Button>(R.id.button2)
